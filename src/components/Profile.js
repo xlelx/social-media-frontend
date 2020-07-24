@@ -149,6 +149,11 @@ class Profile extends Component {
               {`  `}
               <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
+            <Tooltip title="Logout" placement="top">
+            <IconButton onClick={this.handleLogout}>
+              <KeyboardReturn color="primary"></KeyboardReturn>
+            </IconButton>
+          </Tooltip>
           </div>
         </Paper>
       ) : (
@@ -174,15 +179,11 @@ class Profile extends Component {
               Signup
             </Button>
           </div>
-          <Tooltip title="Logout" placement="top">
-            <IconButton onClick={this.handleLogout}>
-              <KeyboardReturn color="primary"></KeyboardReturn>
-            </IconButton>
-          </Tooltip>
+
         </Paper>
       )
     ) : (
-      <p>loading...</p>
+      <p>Loading...</p>
     )
 
     return profileMarkup
