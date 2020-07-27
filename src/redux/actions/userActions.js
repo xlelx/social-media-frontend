@@ -28,7 +28,7 @@ export const loginUser = (userData, history) => dispatch => {
 }
 
 export const getUserData = () => dispatch => {
-  dispatch({ type: LOADING_USER});
+  dispatch({ type: LOADING_USER })
   axios
     .get('/user')
     .then(res => {
@@ -65,19 +65,30 @@ export const signUpUser = (newUserData, history) => dispatch => {
     })
 }
 
-export const uploadImage = (formData)=>(dispatch)=>{
-  dispatch({ type: LOADING_USER});
+export const uploadImage = formData => dispatch => {
+  dispatch({ type: LOADING_USER })
   axios
-  .post('/user/image', formData)
-  .then( res => {
-    dispatch(getUserData())
-  })
-  .catch(err => console.log(err))
-
+    .post('/user/image', formData)
+    .then(res => {
+      dispatch(getUserData())
+    })
+    .catch(err => console.log(err))
 }
 
 const setAuthorizationHeader = token => {
   const FBIdToken = `Bearer ${token}`
   localStorage.setItem('FBIdToken', FBIdToken)
   axios.defaults.headers.common['Authorization'] = FBIdToken
+}
+
+export const editUserDetails = userDetails => dispatch => {
+  dispatch({ type: LOADING_USER })
+  axios
+    .post('/user', userDetails)
+    .then(() => {
+      dispatch(getUserData())
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }

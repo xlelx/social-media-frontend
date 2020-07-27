@@ -1,9 +1,9 @@
 export default {
     palette: {
         primary: {
-          light: '#33c9dc',
-          main: '#00bcd4',
-          dark: '#008394',
+          light: '#cd9777',
+          main: '#b07d62',
+          dark: '#9d6b53',
           contrastText: '#fff'
         },
         secondary: {
@@ -27,7 +27,7 @@ export default {
         margin: '10px auto 10px auto'
       },
       textField: {
-        margin: '10px auto 10px auto'
+        margin: '15px auto 15px auto'
       },
       button: {
         marginTop: 10,

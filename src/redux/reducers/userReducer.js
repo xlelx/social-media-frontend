@@ -5,6 +5,8 @@ import {
   SET_UNAUTHENTICATED,
   CLEAR_ERRORS,
   LOADING_UI,
+  LIKE_SCREAM,
+  UNLIKE_SCREAM,
   LOADING_USER
 } from '../types'
 
@@ -34,6 +36,22 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true
+      }
+    case LIKE_SCREAM:
+      return {
+        ...state,
+        likes: [
+          ...state.likes,
+          {
+            userHandle: state.credentials.handle,
+            screamId: action.payload.screamId
+          }
+        ]
+      }
+    case UNLIKE_SCREAM:
+      return {
+        ...state,
+        likes: state.likes.filter(like => like.screamId !== action.payload.screamId)
       }
     default:
       return state
