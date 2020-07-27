@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was social-media project is done with the help from this tutorial https://youtu.be/m_u6P5k0vP0.
 
 ## Available Scripts
 
