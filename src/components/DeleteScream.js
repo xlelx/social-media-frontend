@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogActions from '@material-ui/core/DialogActions'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 //icons
 import DeleteOutline from '@material-ui/icons/DeleteOutline'
@@ -45,7 +46,7 @@ class DeleteScream extends Component {
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
-          <DeleteOutline color='secondary'></DeleteOutline>
+          <DeleteOutline color='primary'></DeleteOutline>
         </MyButton>
         <Dialog
           open={this.state.open}
