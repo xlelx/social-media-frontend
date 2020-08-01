@@ -1,13 +1,11 @@
 import {
   SET_USER,
-  SET_ERRORS,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
-  CLEAR_ERRORS,
-  LOADING_UI,
   LIKE_SCREAM,
   UNLIKE_SCREAM,
-  LOADING_USER
+  LOADING_USER,
+  MARK_NOTIFICATIONS_READ
 } from '../types'
 
 const initialState = {
@@ -52,6 +50,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         likes: state.likes.filter(like => like.screamId !== action.payload.screamId)
+      }
+    case MARK_NOTIFICATIONS_READ:
+      state.notifications.forEach(noti => noti.read = true);
+      return {
+        ...state
       }
     default:
       return state

@@ -1,17 +1,16 @@
 import React, { Component, Fragment } from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import MyButton from '../util/MyButton'
-import { postScream } from '../redux/actions/dataActions'
+import MyButton from '../../util/MyButton'
+import { postScream, clearErrors } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
 //MUI
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
+import { CircularProgress } from '@material-ui/core'
 
 //Icons
 import AddIcon from '@material-ui/icons/Add'
@@ -19,21 +18,23 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import { connect } from 'react-redux'
 
-import theme from '../util/theme'
-import { CircularProgress } from '@material-ui/core'
+import theme from '../../util/theme'
+
 
 const styles = {
   ...theme,
 
   submitButton: {
-    position: 'relative'
+    position: 'relative',
+    float: 'right',
+    marginTop: 10
   },
   progressSpinner: {
     position: 'absolute'
   },
   closeButton: {
     position: 'absolute',
-    left: '90%',
+    left: '91%',
     top: '6%'
   }
 }
@@ -44,23 +45,24 @@ export class PostScream extends Component {
     body: '',
     errors: {}
   }
-  componentWillReceiveProps(nextProps){
-      if(nextProps.UI.errors){
-          this.setState({
-              errors: nextProps.UI.errors
-          })
-      }
-      if (!nextProps.UI.errors && !nextProps.UI.loading){
-          this.setState({ body: "", open: false, errors:{}});
-      }
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({
+        errors: nextProps.UI.errors
+      })
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+      this.setState({ body: '', open: false, errors: {} })
+    }
   }
   handleOpen = () => {
     this.setState({ open: true })
   }
   handleClose = () => {
-    this.setState({ open: false, errors: {}})
+    this.props.clearErrors()
+    this.setState({ open: false, errors: {} })
   }
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
     this.props.postScream(this.state.body)
   }
@@ -75,7 +77,7 @@ export class PostScream extends Component {
     } = this.props
     return (
       <Fragment>
-        <MyButton tip='Post a Scream' onClick={this.handleOpen}>
+        <MyButton tip='New Post' onClick={this.handleOpen}>
           <AddIcon></AddIcon>
         </MyButton>
         <Dialog open={this.state.open} onClose={this.handleClose} fullWidth>
@@ -86,12 +88,12 @@ export class PostScream extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Post a Scream</DialogTitle>
+          <DialogTitle>Post something new!</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name='body'
-                label='Scream'
+                label='New Post'
                 placeholder='Say what you want'
                 type='text'
                 fullWidth
@@ -104,7 +106,7 @@ export class PostScream extends Component {
                 className={classes.textField}
               ></TextField>
               <Button
-                type="submit"
+                type='submit'
                 variant='contained'
                 onClick={this.handleSubmit}
                 color='primary'
@@ -129,12 +131,14 @@ export class PostScream extends Component {
 
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
+
   UI: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
   UI: state.UI
 })
 
-export default connect(mapStateToProps, { postScream })(
+export default connect(mapStateToProps, { postScream, clearErrors })(
   withStyles(styles)(PostScream)
 )

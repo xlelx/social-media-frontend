@@ -11,13 +11,14 @@ import store from './redux/store'
 import { SET_AUTHENTICATED } from './redux/types'
 import { logoutUser, getUserData } from './redux/actions/userActions'
 //Components
-import NavBar from './components/NavBar'
+import NavBar from './components/layout/NavBar'
 import AuthRoute from './util/AuthRoute'
 
 //Pages
 import home from './pages/home'
 import login from './pages/login'
 import signup from './pages/signup'
+import user from './pages/user'
 
 //Util
 import themeObject from './util/theme'
@@ -25,6 +26,7 @@ import axios from 'axios'
 
 const theme = createMuiTheme(themeObject)
 
+axios.defaults.baseURL = "https://us-central1-social-media-leo.cloudfunctions.net/api";
 const token = localStorage.FBIdToken
 if (token) {
   const decodedToken = jwtDecode(token)
@@ -47,6 +49,8 @@ class App extends Component {
               <div className='container'>
                 <Switch>
                   <Route exact path='/' component={home} />
+                  <Route exact path='/users/:handle' component={user} />
+
                   <AuthRoute
                     exact
                     path='/login'
@@ -57,6 +61,7 @@ class App extends Component {
                     path='/signup'
                     component={signup}
                   />
+                  <Route exact path="/users/:handle/scream/:screamId" component={user}/>
                 </Switch>
               </div>
             </Router>

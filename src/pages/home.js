@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 
-import Scream from '../components/Scream'
-import Profile from '../components/Profile'
+import Scream from '../components/scream/Scream'
+import ScreamSkeleton from '../util/ScreamSkeleton'
+
+import Profile from '../components/profile/Profile'
 import { connect } from 'react-redux'
 
 import { getScreams } from '../redux/actions/dataActions'
@@ -20,7 +21,7 @@ class Home extends Component {
         <Scream scream={scream} key={scream.screamId} />
       ))
     ) : (
-      <p>Loading...</p>
+      <ScreamSkeleton></ScreamSkeleton>
     )
     return (
       <Grid container spacing={1}>

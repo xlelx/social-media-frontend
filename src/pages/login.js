@@ -15,7 +15,7 @@ import { connect } from 'react-redux'
 import { loginUser } from '../redux/actions/userActions'
 
 //Util
-import AppIcon from '../images/logo192.png'
+import AppIcon from '../images/blacklogo.png'
 import themeObject from '../util/theme'
 
 const styles = themeObject
@@ -59,7 +59,7 @@ class login extends Component {
         <Grid item sm />
         <Grid item sm>
           <img src={AppIcon} alt="monkey" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
+          <Typography variant="h4" className={classes.pageTitle}>
             Login
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
@@ -106,7 +106,7 @@ class login extends Component {
             </Button>
             <br />
             <small>
-              Dont have an account? Sign up <Link to="/signup">here</Link>.
+              Don't have an account? Sign up <Link to="/signup">here</Link>.
             </small>
           </form>
         </Grid>

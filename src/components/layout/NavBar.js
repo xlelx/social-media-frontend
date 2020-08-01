@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import MyButton from '../util/MyButton'
-import PostScream from './PostScream'
+import MyButton from '../../util/MyButton'
+import PostScream from '../scream/PostScream'
+import Notifications from './Notifications'
 
 //REdux
 import { connect } from 'react-redux'
@@ -14,7 +15,7 @@ import Button from '@material-ui/core/Button'
 
 //Icon
 import HomeIcon from '@material-ui/icons/Home'
-import Notifications from '@material-ui/icons/Notifications'
+
 
 class NavBar extends Component {
   render () {
@@ -30,9 +31,7 @@ class NavBar extends Component {
                   <HomeIcon ></HomeIcon>
                 </MyButton>
               </Link>
-              <MyButton tip="Notifications">
                   <Notifications></Notifications>
-              </MyButton>
             </Fragment>
           ) : (
             <Fragment>
