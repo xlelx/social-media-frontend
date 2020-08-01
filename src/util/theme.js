@@ -1,19 +1,24 @@
 const theme = {
   palette: {
     primary: {
-      light: '#cd9777',
-      main: '#b07d62',
-      dark: '#9d6b53',
+      lightest: '#ddefe3',
+      light: '#abd8cd',
+      main: '#377375',
+      dark: '#2a484e',
       contrastText: '#fff'
     },
     secondary: {
       light: '#ff6333',
-      main: '#ff3d00',
+      main: '#ce4a50',
       dark: '#b22a00',
       contrastText: '#fff'
     },
     typography: {
       useNextVariants: true
+    },
+    background: {
+      main: '#69a5aa',
+      light: '#adc8c7'
     }
   },
   form: {
@@ -51,15 +56,16 @@ const theme = {
     borderBottom: '1px solid rgba(0,0,0, 0.1)',
     marginBottom: '20px'
   },
-  paper: {
-    padding: 50
-  },
   buttons: {
     textAlign: 'center',
     '& a': {
       margin: '20px 10px'
     }
   }
+}
+theme.paper = {
+  padding: 50,
+  backgroundColor: theme.palette.primary.lightest
 }
 
 theme.profile = {

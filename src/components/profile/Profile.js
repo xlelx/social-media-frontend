@@ -132,7 +132,7 @@ class Profile extends Component {
             </Button>
             <Button
               variant='contained'
-              color='primary'
+              color='secondary'
               component={Link}
               to='/signup'
             >

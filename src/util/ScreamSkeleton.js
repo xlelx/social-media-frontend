@@ -18,7 +18,8 @@ const styles = {
   ...theme,
   card: {
     display: 'flex',
-    marginBottom: 20
+    marginBottom: 20,
+    backgroundColor: theme.palette.primary.lightest
   },
   content: {
     width: '100%',

@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography'
 //Icons
 import ChatIcon from '@material-ui/icons/Chat';
 import { connect } from 'react-redux'
+import theme from '../../util/theme'
 
 
 //redux
@@ -24,7 +25,8 @@ const styles = {
   card: {
     position: 'relative',
     display: 'flex',
-    marginBottom: 20
+    marginBottom: 20,
+    backgroundColor: theme.palette.primary.lightest
   },
   image: {
     minWidth: 200
