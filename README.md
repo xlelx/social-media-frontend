@@ -1,5 +1,9 @@
 This project was social-media project is done with the help from this tutorial https://youtu.be/m_u6P5k0vP0.
 
+Live Demo @ https://social-media-leo.web.app/
+
+The project is built using React, Redux, Material-UI for the clientside and Firebase for the backend. Communication is done through a RESTful API framework.
+
 ## About
 
 This project is built using React and Material-UI following the RESTful API. This webapp is designed to be similar to twitter, and thus contains similar features such as signup, login, creating a post,  delete a post, editing user profile, uploading images and so on. The backend code can be found at https://github.com/xlelx/social-media.
