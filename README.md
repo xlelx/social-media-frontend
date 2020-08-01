@@ -1,8 +1,19 @@
-This project was social-media project is done with the help from this tutorial https://youtu.be/m_u6P5k0vP0.
 
 Live Demo @ https://social-media-leo.web.app/
 
 The project is built using React, Redux, Material-UI for the clientside and Firebase for the backend. Communication is done through a RESTful API framework.
+
+Implemented Features:
+  - Login/Signup
+  - Create new post
+  - Like post
+  - Comment on post
+  - Delete post
+  - Edit user details
+  - Upload/Update profile picture
+  - Notification system
+
+This project was social-media project is done with the help from this tutorial https://youtu.be/m_u6P5k0vP0.
 
 ## About
 
